@@ -3,7 +3,7 @@ package database
 import (
 	"fmt"
 
-	"github.com/Satr10/fufufafa-api/api/model"
+	"github.com/Satr10/fufufafa-api/model"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )

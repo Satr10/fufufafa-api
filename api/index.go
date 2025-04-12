@@ -3,7 +3,7 @@ package api
 import (
 	"net/http"
 
-	"github.com/Satr10/fufufafa-api/api/router"
+	"github.com/Satr10/fufufafa-api/router"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/adaptor"
 )
