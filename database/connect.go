@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/Satr10/fufufafa-api/config"
-	"github.com/Satr10/fufufafa-api/model"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -17,6 +16,6 @@ func ConnectDB() {
 		panic("gagal connect ke database")
 	}
 	fmt.Println("Connection Opened to Database")
-	DB.AutoMigrate(&model.Post{})
+	// DB.AutoMigrate(&model.Post{})
 	fmt.Println("Database Migrated")
 }
