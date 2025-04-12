@@ -3,6 +3,7 @@ package api
 import (
 	"net/http"
 
+	"github.com/Satr10/fufufafa-api/database"
 	"github.com/Satr10/fufufafa-api/router"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/adaptor"
@@ -18,6 +19,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 // building the fiber application
 func handler() http.HandlerFunc {
+	database.ConnectDB()
 	app := fiber.New()
 
 	router.SetupRouter(app)
