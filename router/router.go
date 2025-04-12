@@ -1,13 +1,14 @@
 package router
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"github.com/Satr10/fufufafa-api/handlers"
+	"github.com/gofiber/fiber/v2"
+)
 
 func SetupRouter(app *fiber.App) {
 
+	app.Get("/", handlers.AllFufufafa)
 	api := app.Group("/api")
-	api.Get("/", func(c *fiber.Ctx) error {
-		return c.JSON(fiber.Map{
-			"Message": "Hello World",
-		})
-	})
+	api.Get("/", handlers.AllFufufafa)
+
 }
