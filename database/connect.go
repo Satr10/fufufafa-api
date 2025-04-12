@@ -10,7 +10,7 @@ import (
 
 func ConnectDB() {
 	var err error
-	DB, err = gorm.Open(sqlite.Open("./fufufafa.db"), &gorm.Config{})
+	DB, err = gorm.Open(sqlite.Open("./data/fufufafa.db"), &gorm.Config{})
 	if err != nil {
 		panic("gagal connect ke database")
 	}
