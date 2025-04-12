@@ -1,2 +1,4 @@
 .vercel
 main.go
+.env*.local
+.env
