@@ -3,14 +3,16 @@ package database
 import (
 	"fmt"
 
+	"github.com/Satr10/fufufafa-api/config"
 	"github.com/Satr10/fufufafa-api/model"
-	"gorm.io/driver/sqlite"
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
 func ConnectDB() {
 	var err error
-	DB, err = gorm.Open(sqlite.Open("./data/fufufafa.db"), &gorm.Config{})
+	dsn := fmt.Sprintf("host=%v user=%v password=%v dbname=%v port=%v sslmode=require TimeZone=Asia/Jakarta", config.Config("host"), config.Config("user"), config.Config("password"), config.Config("dbname"), config.Config("port"))
+	DB, err = gorm.Open(postgres.New(postgres.Config{DSN: dsn, PreferSimpleProtocol: true}), &gorm.Config{})
 	if err != nil {
 		panic("gagal connect ke database")
 	}
