@@ -14,5 +14,6 @@ func SetupRouter(app *fiber.App) {
 
 	api.Get("/", handlers.AllFufufafa)
 	api.Get("/:quote_id<int>?", handlers.SingleFufufafa)
+	api.Get("/random", handlers.RandomQuote)
 
 }

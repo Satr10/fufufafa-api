@@ -3,6 +3,7 @@ package handlers
 import (
 	"strconv"
 
+	"github.com/Satr10/fufufafa-api/database"
 	"github.com/Satr10/fufufafa-api/helpers"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/log"
@@ -26,6 +27,13 @@ func SingleFufufafa(c *fiber.Ctx) error {
 
 	quote := helpers.QuoteById(id)
 	return c.JSON(quote)
+}
+
+func RandomQuote(c *fiber.Ctx) error {
+	pilihan := helpers.Random.Intn(int(database.TotalQuote)) + 1
+
+	quoteRandom := helpers.QuoteById(pilihan)
+	return c.JSON(quoteRandom)
 }
 
 func Index(c *fiber.Ctx) error {
