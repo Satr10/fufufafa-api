@@ -1,5 +1,4 @@
 .vercel
-main.go
 .env*.local
 .env
 fufufafa-api
