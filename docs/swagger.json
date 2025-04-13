@@ -1,0 +1,105 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "description": "Returns a welcome message with link to API documentation",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "root"
+                ],
+                "summary": "Index endpoint",
+                "responses": {
+                    "200": {
+                        "description": "Returns status, welcome message and docs link",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api": {
+            "get": {
+                "description": "Returns a list of all Fufufafa quotes from the database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "quotes"
+                ],
+                "summary": "Get all Fufufafa quotes",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.Post"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/random": {
+            "get": {
+                "description": "Returns a random Fufufafa quote from the database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "quotes"
+                ],
+                "summary": "Get a random Fufufafa quote",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Post"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.Post": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "datetime": {
+                    "type": "string"
+                },
+                "doksli": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "image_url": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

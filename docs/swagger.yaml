@@ -1,0 +1,67 @@
+definitions:
+  model.Post:
+    properties:
+      content:
+        type: string
+      datetime:
+        type: string
+      doksli:
+        type: string
+      id:
+        type: integer
+      image_url:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: Returns a welcome message with link to API documentation
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Returns status, welcome message and docs link
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Index endpoint
+      tags:
+      - root
+  /api:
+    get:
+      consumes:
+      - application/json
+      description: Returns a list of all Fufufafa quotes from the database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.Post'
+            type: array
+      summary: Get all Fufufafa quotes
+      tags:
+      - quotes
+  /api/random:
+    get:
+      consumes:
+      - application/json
+      description: Returns a random Fufufafa quote from the database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Post'
+      summary: Get a random Fufufafa quote
+      tags:
+      - quotes
+swagger: "2.0"
