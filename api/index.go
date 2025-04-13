@@ -12,6 +12,7 @@ import (
 	"github.com/Satr10/fufufafa-api/router"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/adaptor"
+	"github.com/gofiber/fiber/v2/middleware/favicon"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 )
 
@@ -33,7 +34,11 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 func handler() http.HandlerFunc {
 	app := fiber.New()
 	app.Use(logger.New())
-
+	// favicon
+	app.Use(favicon.New(favicon.Config{
+		File: "./public/favicon/favicon.ico",
+		URL:  "/favicon.ico",
+	}))
 	router.SetupRouter(app)
 	app.Use(middleware.NotFound)
 
