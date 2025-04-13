@@ -1,14 +1,36 @@
 package handlers
 
 import (
-	"github.com/Satr10/fufufafa-api/database"
-	"github.com/Satr10/fufufafa-api/model"
+	"strconv"
+
+	"github.com/Satr10/fufufafa-api/helpers"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/log"
 )
 
 func AllFufufafa(c *fiber.Ctx) error {
-	var allFufufafa []model.Post
-	database.DB.Find(&allFufufafa)
-	return c.JSON(allFufufafa)
+	quotes := helpers.AllQuote()
+	return c.JSON(quotes)
+}
 
+func SingleFufufafa(c *fiber.Ctx) error {
+	quoteID := c.Params("quote_id")
+
+	id, err := strconv.Atoi(quoteID)
+	if err != nil {
+		log.Error("Error converting string to int: %v", err)
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"error": "Invalid quote ID format",
+		})
+	}
+
+	quote := helpers.QuoteById(id)
+	return c.JSON(quote)
+}
+
+func Index(c *fiber.Ctx) error {
+	return c.JSON(fiber.Map{
+		"status":  "Success",
+		"message": "Halo User",
+	})
 }
