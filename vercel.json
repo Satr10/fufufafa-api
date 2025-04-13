@@ -1,5 +1,28 @@
 {
   "rewrites": [
     { "source": "(.*)", "destination": "api/index.go" }
+  ],
+
+  "headers": [
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=1800"
+        }
+      ]
+    },
+    {
+      "source": "/random",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=1800"
+        }
+      ]
+    }
   ]
+
+
 }
