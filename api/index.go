@@ -12,6 +12,7 @@ import (
 	"github.com/Satr10/fufufafa-api/router"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/adaptor"
+	"github.com/gofiber/fiber/v2/middleware/logger"
 )
 
 // Handler is the main entry point of the application. Think of it like the main() method
@@ -31,6 +32,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 // building the fiber application
 func handler() http.HandlerFunc {
 	app := fiber.New()
+	app.Use(logger.New())
 
 	router.SetupRouter(app)
 	app.Use(middleware.NotFound)
