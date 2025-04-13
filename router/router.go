@@ -15,8 +15,8 @@ func SetupRouter(app *fiber.App) {
 	// group route for api
 	api := app.Group("/api")
 
-	api.Get("/", handlers.AllFufufafa)
-	api.Get("/:quote_id<int>?", cache.New(cache.Config{Expiration: 30 * time.Minute, CacheControl: true}), handlers.AllFufufafa)
+	api.Get("/", cache.New(cache.Config{Expiration: 30 * time.Minute, CacheControl: true}), handlers.AllFufufafa)
+	api.Get("/:quote_id<int>?", handlers.SingleFufufafa)
 	api.Get("/random", handlers.RandomQuote)
 
 }
