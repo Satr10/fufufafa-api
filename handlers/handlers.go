@@ -10,6 +10,7 @@ import (
 )
 
 func AllFufufafa(c *fiber.Ctx) error {
+	c.Set("Cache-Control", "public, max-age=60, s-maxage=60, stale-while-revalidate=30")
 	quotes := helpers.AllQuote()
 	return c.JSON(quotes)
 }
@@ -26,6 +27,12 @@ func SingleFufufafa(c *fiber.Ctx) error {
 	}
 
 	quote := helpers.QuoteById(id)
+	if quote.ID == 0 {
+		return c.JSON(fiber.Map{
+			"error":   true,
+			"message": "Data tidak ditemukan",
+		})
+	}
 	return c.JSON(quote)
 }
 
