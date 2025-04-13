@@ -12,6 +12,7 @@ import (
 	"github.com/Satr10/fufufafa-api/router"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/adaptor"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 )
 
@@ -37,6 +38,7 @@ func handler() http.HandlerFunc {
 		// Views: engine,
 	})
 	app.Use(logger.New())
+	app.Use(cors.New())
 
 	router.SetupRouter(app)
 	app.Use(middleware.NotFound)
