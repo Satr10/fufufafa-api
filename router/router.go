@@ -12,6 +12,12 @@ func SetupRouter(app *fiber.App) {
 
 	app.Get("/", handlers.Index)
 
+	// test views on vercel
+
+	// app.Get("/test", func(c *fiber.Ctx) error {
+	// 	return c.Render("index", fiber.Map{})
+	// })
+
 	// group route for api
 	api := app.Group("/api")
 
